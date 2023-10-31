@@ -1,0 +1,61 @@
+
+.content {
+    width: 100%;
+    padding: 10px;   
+
+}
+
+.content textarea {
+    height: 100px;
+    resize: none;
+    padding: 5px;
+    width: 100%;
+}
+
+.content input {
+    height: 40px;
+    padding: 5px;
+    width: 100%;
+
+}
+
+.content select {
+    height: 40px;
+    background: none;
+    padding: 5px;
+    width: 100%;
+
+}
+
+.content_button {
+    display: flex;
+    margin: 10px 10px 0px 0px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.content_button button {
+    padding: 10px;
+    font-weight: 700;
+    height: 50px;
+    width: 130px;
+    background: rgb(28, 28, 148);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+
+}
+
+
+
+.checkBox {
+    margin: 10px;
+    width: 100%;
+
+
+}
+
+.checkBox label {
+    margin-left: 10px;
+}

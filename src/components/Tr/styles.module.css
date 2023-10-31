@@ -1,0 +1,23 @@
+.tr:hover {
+  background-color: var(--focus) !important;
+}
+
+.tr:nth-child(odd) {
+  background-color: var(--table-zebra);
+}
+
+.tr:nth-child(even) {
+  background-color: var(--white);
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
