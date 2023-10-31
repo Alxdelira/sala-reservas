@@ -1,5 +1,4 @@
 import Form from "@/components/Form";
-import Header from "@/components/Header";
 import Table from "@/components/Table";
 import Thead from "@/components/Thead";
 import Th from "@/components/Th";
@@ -8,6 +7,7 @@ import Tbody from "@/components/Tbody";
 import Td from "@/components/Td";
 import { useState } from "react";
 import Mensagem from "@/components/Mensage";
+import styles from '@/styles/Home.module.scss'
 
 export default function Home() {
   const [mensagem, setMensagem] = useState(false);
@@ -100,20 +100,10 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ display: "flex", height: "880px" }}>
-        <div
-          style={{
-            width: "30%",
-            backgroundColor: "#E8EAEE",
-          }}
-        >
-          <div style={{ marginBottom: "100px" }}>
-            <div
-              style={{
-                margin: "10px",
-                fontWeight: 700,
-              }}
-            >
+      <div className={styles.container}>
+        <div className={styles.content}       >
+          <div className={styles.contant_reserva}>
+            <div className={styles.content_sala}>
               <label>Reservar Sala</label>
             </div>
             {mensagemErro && (
@@ -139,14 +129,7 @@ export default function Home() {
           />
         </div>
         <hr />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            margin: "10px",
-            width: "70%",
-          }}
-        >
+        <div className={styles.content_tabela}>
           <label> 📆 Reservas Realizadas: {reservas.length}</label>
           <Table>
             <Thead>

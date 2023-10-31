@@ -1,0 +1,24 @@
+.container {
+  display: "flex";
+  height: "880px";
+}
+
+.content {
+  width: "30%";
+  background-color: "#E8EAEE";
+}
+.content_reserva {
+  margin-bottom: "100px";
+}
+
+.content_sala {
+  margin: "10px";
+  font-weight: 700;
+}
+
+.content_tabela {
+  display: "flex";
+  flex-direction: "column";
+  margin: "10px";
+  width: "70%";
+}

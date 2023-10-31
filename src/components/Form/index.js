@@ -42,7 +42,7 @@ export default function Form({
             value={value.sala}
             onChange={onChange.sala}
           >
-            <option value={""} selected disabled >
+            <option value="" disabled >
                 ... Selecione uma sala
             </option>
             <option value="Bloco A - Lab. de Informática 1">

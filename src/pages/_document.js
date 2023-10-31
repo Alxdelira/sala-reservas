@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="pt-br">
       <Head />
       <body>
-        <Header>Reserva de Salas</Header>
+      <Header>Reserva de Salas</Header>
         <Main />
         <NextScript />
       </body>
