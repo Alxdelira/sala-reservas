@@ -1,0 +1,14 @@
+@import '/src/styles/theme.scss';
+.table {
+ 
+  width: 100%;
+  box-sizing: border-box;
+  
+  margin: .3rem;
+  font-family: $fontSecondary;
+  font-size: $fontSizeMedium;
+  
+  border: $dark;
+  border-collapse: collapse;
+  overflow: hidden;
+}

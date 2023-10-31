@@ -1,4 +1,3 @@
-import Container from "@/components/Container";
 import Form from "@/components/Form";
 import Header from "@/components/Header";
 import Table from "@/components/Table";
@@ -8,65 +7,147 @@ import Tr from "@/components/Tr";
 import Tbody from "@/components/Tbody";
 import Td from "@/components/Td";
 import { useState } from "react";
+import Mensagem from "@/components/Mensage";
 
 export default function Home() {
+  const [mensagem, setMensagem] = useState(false);
+  const [mensagemErro, setMensagemErro] = useState(false);
   const [reservas, setReservas] = useState([]);
-  const [descricao, setDescricao] = useState("");
-  const [solicitante, setSolicitante] = useState("");
-  const [sala, setSala] = useState("1");
-  const [inicio, setInicio] = useState("");
-  const [fim, setFim] = useState("");
-  const [termos, setTermos] = useState(false);
+  const [formValues, setFormValues] = useState({
+    descricao: "",
+    solicitante: "",
+    sala: "",
+    inicio: "",
+    fim: "",
+    termos: false,
+  });
 
+  const handleDescricaoChange = (e) => {
+    setFormValues({ ...formValues, descricao: e.target.value });
+  };
+
+  const handleSolicitanteChange = (e) => {
+    setFormValues({ ...formValues, solicitante: e.target.value });
+  };
+
+  const handleSalaChange = (e) => {
+    setFormValues({ ...formValues, sala: e.target.value });
+  };
+
+  const handleInicioChange = (e) => {
+    setFormValues({ ...formValues, inicio: e.target.value });
+  };
+
+  const handleFimChange = (e) => {
+    setFormValues({ ...formValues, fim: e.target.value });
+  };
+
+  const handleTermosChange = (e) => {
+    setFormValues({ ...formValues, termos: e.target.checked });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (
+      !formValues.descricao ||
+      !formValues.solicitante ||
+      !formValues.termos
+    ) {
+      setMensagemErro(true);
+      setTimeout(() => {
+        setMensagemErro(false);
+      }, 2000);
+      return;
+    }
+    const novaReserva = {
+      descricao: formValues.descricao,
+      solicitante: formValues.solicitante,
+      sala: formValues.sala,
+      inicio: formValues.inicio,
+      fim: formValues.fim,
+      termos: formValues.termos,
+    };
+    setReservas([...reservas, novaReserva]);
+    setMensagem(true);
+    setTimeout(() => {
+      setMensagem(false);
+    }, 2000);
+    setFormValues({
+      descricao: "",
+      solicitante: "",
+      sala: "",
+      inicio: "",
+      fim: "",
+      termos: false,
+    });
+  };
+
+  function formatarData(data) {
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    };
+  
+    const dataFormatada = new Date(data).toLocaleDateString('pt-BR', options);
+    
+    
+    return dataFormatada.replace(",", "").replace(" ", " às ");
+  }
 
   return (
     <>
-      <Header>Reserva de Salas</Header>
-      <div style={{ display: 'flex', height: '880px' }}>
-        <div style={{
-          margin: '10px',
-          width: '30%',
-        }}>
-          <div style={{ marginBottom: '190px' }}>
-            <div style={{
-              margin: '10px',
-            }}>
+      <div style={{ display: "flex", height: "880px" }}>
+        <div
+          style={{
+            width: "30%",
+            backgroundColor: "#E8EAEE",
+          }}
+        >
+          <div style={{ marginBottom: "100px" }}>
+            <div
+              style={{
+                margin: "10px",
+                fontWeight: 700,
+              }}
+            >
               <label>Reservar Sala</label>
             </div>
+            {mensagemErro && (
+              <Mensagem type="error">Preencha todos os campos!</Mensagem>
+            )}
+            {mensagem && (
+              <Mensagem type="success">
+                Agendamento realizado com sucesso!
+              </Mensagem>
+            )}
           </div>
-          <Form onClick={(e) => {
-            e.preventDefault();
-            const novaReserva = {
-              descricao,
-              solicitante,
-              sala,
-              inicio,
-              fim,
-              termos
-            };
-            setReservas([...reservas, novaReserva]);
-            setDescricao("");
-            setSolicitante("");
-            setSala("1");
-            setInicio("");
-            setFim("");
-            setTermos(false);
-          }}
-            onChange={(e) => {
-              const novaDescricao = e.target.value;
-              setDescricao(novaDescricao);
-            }
-            }
+          <Form
+            onSubmit={handleFormSubmit}
+            value={formValues}
+            onChange={{
+              descricao: handleDescricaoChange,
+              solicitante: handleSolicitanteChange,
+              sala: handleSalaChange,
+              inicio: handleInicioChange,
+              fim: handleFimChange,
+              termos: handleTermosChange,
+            }}
           />
         </div>
         <hr />
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          margin: '10px',
-          width: '70%',
-        }}>
-          <label>Reservas Realizadas: {reservas.length}</label>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            margin: "10px",
+            width: "70%",
+          }}
+        >
+          <label> 📆 Reservas Realizadas: {reservas.length}</label>
           <Table>
             <Thead>
               <Tr>
@@ -83,8 +164,8 @@ export default function Home() {
                   <Td>{reserva.descricao}</Td>
                   <Td>{reserva.solicitante}</Td>
                   <Td>{reserva.sala}</Td>
-                  <Td>{reserva.inicio}</Td>
-                  <Td>{reserva.fim}</Td>
+                  <Td>{formatarData(reserva.inicio)}</Td>
+                  <Td>{formatarData(reserva.fim)}</Td>
                 </Tr>
               </Tbody>
             ))}

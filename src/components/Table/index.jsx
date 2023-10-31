@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export default function Table({ children, 
   padding, padding_top, padding_right, padding_left, padding_bottom, 

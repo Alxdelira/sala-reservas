@@ -1,7 +1,10 @@
+@import '/src/styles/theme.scss';
+
 
 .content {
     width: 100%;
-    padding: 10px;   
+    padding: 10px;  
+    
 
 }
 
@@ -10,20 +13,30 @@
     resize: none;
     padding: 5px;
     width: 100%;
+    border: 1px solid $gray;
+
 }
 
 .content input {
     height: 40px;
     padding: 5px;
     width: 100%;
-
+    border: 1px solid $gray;
 }
 
+.success {    
+    
+    border: 1px solid $gray;
+}
+.error {
+    border: 1px solid red;
+}
 .content select {
     height: 40px;
-    background: none;
     padding: 5px;
     width: 100%;
+    border: 1px solid $gray;
+
 
 }
 
@@ -39,8 +52,8 @@
     font-weight: 700;
     height: 50px;
     width: 130px;
-    background: rgb(28, 28, 148);
-    color: #fff;
+    background: $primary;
+    color: $white;
     border: none;
     cursor: pointer;
     margin: 10px;

@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import classNames from "classnames";
 
 export default function Tr({ children, center, left, right, ...props }) {

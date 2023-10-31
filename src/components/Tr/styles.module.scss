@@ -1,0 +1,25 @@
+@import '/src/styles/theme.scss';
+
+.tr:hover {
+  background-color: $focus !important;
+}
+.tr:nth-child(even) {
+  background-color: $white;
+}
+
+.tr:nth-child(odd) {
+  background-color: $lightGray;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
