@@ -91,15 +91,16 @@ export default function Home() {
       minute: '2-digit',
       second: '2-digit',
     };
-  
+
     const dataFormatada = new Date(data).toLocaleDateString('pt-BR', options);
-    
-    
+
+
     return dataFormatada.replace(",", "").replace(" ", " às ");
   }
 
   return (
     <>
+      <Header>Reserva de Salas</Header>
       <div style={{ display: "flex", height: "880px" }}>
         <div
           style={{
